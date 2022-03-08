@@ -6,11 +6,11 @@
     "variables": {},
     "resources": [
 {
-    "name": "maximumStorageAdvanced1",
+    "name": "maximumstorageadvanced1",
     "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2021-04-01",
     "tags": {
-        "displayName": "maximumStorageAdvanced1"
+        "displayName": "maximumstorageadvanced1"
     },
     "location": "[resourceGroup().location]",
     "kind": "StorageV2",
