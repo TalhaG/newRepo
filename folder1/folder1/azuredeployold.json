@@ -6,15 +6,17 @@
     "variables": {},
     "resources": [
 {
-    "name": "assignmentContainerReg",
-    "type": "Microsoft.ContainerRegistry/registries",
-    "apiVersion": "2019-05-01",
-    "location": "[resourceGroup().location]",
-    "sku": {
-        "name": "Basic"
+    "name": "maximumstorageadvanced1",
+    "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2021-04-01",
+    "tags": {
+        "displayName": "maximumstorageadvanced1"
     },
-    "properties": {
-        "adminUserEnabled": true
+    "location": "[resourceGroup().location]",
+    "kind": "StorageV2",
+    "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
     }
 }
     ],
