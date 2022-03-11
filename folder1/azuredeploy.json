@@ -5,18 +5,55 @@
     "functions": [],
     "variables": {},
     "resources": [
-{
-    "name": "assignmentContainerReg",
-    "type": "Microsoft.ContainerRegistry/registries",
-    "apiVersion": "2019-05-01",
-    "location": "[resourceGroup().location]",
-    "sku": {
-        "name": "Basic"
-    },
-    "properties": {
-        "adminUserEnabled": true
-    }
-}
+        {
+            "type": "Microsoft.ContainerInstance/containerGroups",
+            "apiVersion": "2021-10-01",
+            "name": "assignmentContainerInstance",
+            "location": "eastus",
+            "properties": {
+                "sku": "Standard",
+                "containers": [
+                    {
+                        "name": "assignmentContainerInstance",
+                        "properties": {
+                            "image": "assignmentcontainerreg.azurecr.io/react-and-spring-data-rest:latest",
+                            "ports": [
+                                {
+                                    "protocol": "TCP",
+                                    "port": 80
+                                }
+                            ],
+                            "environmentVariables": [],
+                            "resources": {
+                                "requests": {
+                                    "memoryInGB": 1.5,
+                                    "cpu": 1
+                                }
+                            }
+                        }
+                    }
+                ],
+                "initContainers": [],
+                "imageRegistryCredentials": [
+                    {
+                        "server": "assignmentcontainerreg.azurecr.io",
+                        "username": "assignmentcontainerreg"
+                    }
+                ],
+                "restartPolicy": "OnFailure",
+                "ipAddress": {
+                    "ports": [
+                        {
+                            "protocol": "TCP",
+                            "port": 80
+                        }
+                    ],
+                    "type": "Public",
+                    "dnsNameLabelReusePolicy": "Unsecure"
+                },
+                "osType": "Linux"
+            }
+        }
     ],
     "outputs": {}
 }
